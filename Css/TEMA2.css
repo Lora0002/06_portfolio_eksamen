@@ -1,0 +1,182 @@
+/* Desktop-first Tema_01 styles */
+.case-study {
+  background: var(--bg-base);
+  padding: 6rem 1rem;
+}
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+
+.case-header {
+  display: grid;
+  grid-template-columns: 1fr 360px;
+  grid-auto-rows: auto;
+  gap: 1rem;
+  align-items: start;
+  padding: 6rem 2rem 2rem;
+}
+
+/* sørg for at Tema 2 står under titlen i venstre kolonne */
+.case-title {
+  grid-column: 1 / 2;
+  grid-row: 1;
+  margin: 0;
+    font-family: var(--font-h1-var2);
+    font-size: clamp(48px, 9vw, 180px);
+}
+.case-theme {
+  grid-column: 1 / 2;
+  grid-row: 2;
+  margin-top: 1rem;
+  font-size: clamp(18px, 6vw, 18px);
+  font-family: var(--font-p-var1);
+  color: var(--grey-primary);
+  margin-top: 10%;
+}
+
+/* placer 'prøve' i højre kolonne og sænk den lidt */
+.case-meta {
+  grid-column: 2 / 3;
+  grid-row: 1 / 3; /* tager begge rækker, så den kan sidde midt/neden */
+  justify-self: end;
+  align-self: start;
+}
+.case-proof {
+  display: inline-block;
+  transform: translateY(40px); /* justér px for at flytte 'prøve' præcis hvor du vil */
+  font-style: italic;
+  text-align: right;
+    font-family: var(--font-h1-var2);
+    font-size: clamp(18px, 6vw, 45px);
+    margin-top: 90%;
+}
+
+
+.divider {
+  border: 0;
+  border-top: 1px solid rgba(0,0,0,0.12);
+  margin-bottom:  1.5rem 0 2rem;
+  margin: 50px;
+}
+
+/* Desktop: two-column grid as default */
+.case-grid {
+  display: grid;
+  grid-template-columns: 1fr 480px;
+  gap: 4rem;
+  align-items: center;
+}
+.case-text p {
+  font-family: var(--font-p-var1);
+  color: var(--grey-primary);
+  font-size: 20px;
+  max-width: 58ch;
+  margin:70px ;
+}
+.case-media {
+  display: flex;
+  justify-content: flex-end;
+}
+.case-media img {
+  max-width: 600px;
+  
+
+  display: block;
+  transform: translateY(8px);
+  margin: 70px;
+}
+.center-focus {
+  padding: 6rem 1rem;
+  text-align: center;
+}
+
+.focus-grid {
+  display: grid;
+  gap: 3rem;
+  justify-items: center;
+}
+.center-focus h1 {
+  text-align: left;
+  margin-bottom: 2rem;
+  margin: 50px;
+}
+.focus-text {
+ 
+  font-family: var(--font-p-var1);
+  font-size: 20px;
+    color: var(--grey-primary);
+  margin: 50px;
+}
+
+
+.focus-media img {
+  max-width: 900px;
+  
+ 
+}
+
+.mobile-first {
+  padding: 6rem 1rem;
+}
+
+.mobile-grid {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 4rem;
+  align-items: center;
+
+}
+
+.mobile-media img {
+  width: 100%;
+  max-width: 280px;
+  
+}
+
+.cta {
+  padding: 6rem 1rem;
+  text-align: center;
+  height: 710px;
+}
+
+.cta h1 {
+  font-family: var(--font-h1-var1);
+  margin-bottom: 2rem;
+    
+}
+
+.pill {
+  padding: .75rem 2rem;
+  border: 1px solid #000;
+  border-radius: 999px;
+  text-decoration: none;
+  font-family: var(--font-p-var1);
+}
+/* Mobile fallback: stack and reduce sizes */
+@media (max-width: 900px) {
+  .case-study { padding: 3.2rem 1rem; }
+  .case-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: .5rem;
+  }
+  .case-title {
+    font-size: clamp(40px, 9vw, 80px);
+  }
+  .case-subtitle {
+    font-size: clamp(18px, 6vw, 36px);
+    text-align: left;
+  }
+  .case-grid {
+    display: block;
+  }
+  .case-text p {
+    font-size: 18px;
+    margin-bottom: 1.25rem;
+  }
+  .case-media { justify-content: center; margin-top: 1.25rem; }
+  .case-media img { max-width: 100%; transform: translateY(0); }
+}
