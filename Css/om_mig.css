@@ -1,26 +1,28 @@
-/* Begrænser bredden på alle sectioner og centrerer dem */
+/* Begrænser bredden på sektioner og centrerer dem */
 section {
-  max-width: 1200px;
-  margin: 0 auto 8rem;
-  padding: 0 1rem;
-    background: var(--bg-base);
+  padding: 0 1.5rem; /* mere plads til siderne på mobil */
+  margin: 0 auto 4rem; /* lodret margin */
+  background: var(--bg-base);
+  box-sizing: border-box; /* sikrer at padding ikke bryder layout */
 }
 
 /*-------------- SEKTION 1 ----------------*/
-/* Grid-layout med to kolonner */
 .about-grid {
-    margin-top: 100px;
+  margin-top: 2rem;
   display: grid; /* Aktiverer CSS Grid */
-  grid-template-columns: 1fr 1fr; /* To lige brede kolonner */
+  grid-template-columns: 1fr; /* Én kolonne på mobil */
   gap: 1rem; /* Afstand mellem kolonner */
-    align-items: center;
+  align-items: center;
+  padding: 0 1rem; /* margin indvendigt så det ikke rammer kanterne */
 }
+
 /* Billeder i venstre kolonne */
 .about-left img,
 .experience-left img {
   width: 100%;
   max-width: 320px;
 }
+
 /* Horisontale linjer (hr) */
 .about-right hr,
 .experience-right hr,
@@ -31,43 +33,44 @@ section {
   font-family: var(--font-h1-var2);
 }
 
-
 /*-------------- SEKTION 2 ----------------*/
 /* Overskrifter inde i tekst-sektion */
+.text {
+  padding: 0 1rem; /* margin indvendigt */
+}
 .text h2 {
   font-family: var(--font-h1-var2);
-  margin-bottom: 1rem;
-  margin:1.5rem 0;
+  margin: 1.5rem 0;
 }
+
 /* Paragrafer i tekst-sektion */
 .text p {
   font-family: var(--font-p-var1);
   line-height: 1.6; /* God læsbarhed */
 }
 
-
 /*-------------- SEKTION 3 ----------------*/
 /* Wrapper til mind-boost sektionen */
 .mind-boost {
-  max-width: 1200px;
+  max-width: 100%;
+  padding: 0 1rem; /* margin indvendigt */
 }
 
-/* ===== RUN / STRAVA ===== */
 .run {
-   position: relative;
-  width: 100vw;
-  height: 85vh;
-  max-width: none;  /* Ignorer section max-width */
+  position: relative;
+  width: 100%;
+  height: 60vh; /* mindre højde på mobil */
   overflow: hidden;
+  padding: 0 1rem; /* margin indvendigt */
+  box-sizing: border-box;
 }
 
 .run img {
-     width: 100%;
+  width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
 }
-
 
 /* Overlay ovenpå billedet */
 .run-overlay {
@@ -81,10 +84,43 @@ section {
   color: white;
   text-align: center;
   font-family: var(--font-h1-var2);
+  padding: 0 1rem; /* lidt luft til siderne på små skærme */
 }
 
 /* Overskrift i overlay */
 .run-overlay h1 {
-  font-size: clamp(2rem, 5vw, 4rem); /* Responsiv tekst */
-    margin-bottom: 1rem;
+  font-size: clamp(1.5rem, 6vw, 3rem); /* Responsiv tekst på mobil */
+  margin-bottom: 1rem;
+}
+
+/*-------------- DESKTOP ----------------*/
+@media screen and (min-width: 900px) {
+  /* To kolonner til større skærme */
+  .about-grid {
+    grid-template-columns: 1fr 1fr; /* To lige brede kolonner */
+    margin-top: 8rem;
+    padding: 0 4rem; /* MEGET luft på siderne */
+  }
+
+  section {
+    margin-bottom: 12rem; /* større margin på desktop */
+    padding: 0 4rem; /* mere luft på siderne */
+  }
+
+  .text {
+    padding: 0 4rem; /* luft til tekst på store skærme */
+  }
+
+  .mind-boost {
+    padding: 0 4rem; /* luft på siderne */
+  }
+
+  .run {
+    height: 90vh; /* større højdeforhold */
+    padding: 0; /* fylder hele bredden */
+  }
+
+  .run-overlay h1 {
+    font-size: clamp(2.5rem, 5vw, 5rem); /* større overskrift på desktop */
+  }
 }

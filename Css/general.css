@@ -1,5 +1,5 @@
  /*-------------- RESET ----------------*/
-* { /* Nulstiller browserens standard-margener og padding */
+* { /* Nulstiller browserens standard-margen og padding */
   margin: 0;
   padding: 0;
   box-sizing: border-box; /* Gør bredde/højde nemmere at regne med */

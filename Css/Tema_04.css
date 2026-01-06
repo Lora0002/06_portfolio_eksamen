@@ -1,7 +1,7 @@
 /* Wrapper der omslutter hele siden */
 .case-study {
   background: var(--bg-base); /* Ens baggrundsfarve */
-  padding: 6rem 1rem;  /* Luft top/bund + mobilvenlig side-padding */
+  padding: 2.5rem 1rem; /* mobil-first: mindre padding */
 }
 .container {
   max-width: 1200px;
@@ -10,291 +10,310 @@
 }
 
 /*-------------- SEKTION 1 ----------------*/
-/* Grid bruges til placering af titel og metadata */
+/* Grid bruges til placering af titel og metadata (stacked på mobil) */
 .case-header {
-  display: grid; /* Aktiverer CSS Grid */
-  grid-template-columns: 1fr 360px; /* 1fr = fleksibel tekstkolonne
-     360px = fast sidebar  */
-  grid-auto-rows: auto;  /* Rækker justeres efter indhold */
-  gap: 1rem;  /* Afstand mellem grid-items */
-  align-items: start;  /* Indhold starter øverst */
-  padding: 6rem 2rem 2rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-auto-rows: auto;
+  gap: .5rem;
+  align-items: start;
+  padding: 1.5rem 1rem;
 }
 
 .case-title {
-  grid-column: 1 / 2; /* Placeres i første kolonne */
-  grid-row: 1; /* Første række */
+  grid-column: 1 / 2;
+  grid-row: 1;
   margin: 0;
-    font-family: var(--font-h1-var2);
-    font-size: clamp(48px, 9vw, 180px);
+  font-family: var(--font-h1-var2);
+  font-size: clamp(28px, 8vw, 40px);
 }
+
 /* Undertitel / tema */
-.case-theme { 
-  grid-column: 1 / 2; /* Samme kolonne som titel */
-  grid-row: 2; /* Række under titlen */
-  margin-top: 1rem;
-  font-size: clamp(18px, 6vw, 18px);
+.case-theme {
+  grid-column: 1 / 2;
+  grid-row: 3;
+  margin-top: .5rem;
+  font-size: clamp(14px, 3.5vw, 16px);
   font-family: var(--font-p-var1);
   color: var(--grey-primary);
-  margin-top: 10%;
 }
-/* Tekst i sidebar */
 
+/* Tekst i sidebar (på mobil vises den efter titel) */
 .case-meta {
-  grid-column: 2 / 3; /* Anden kolonne */
-  grid-row: 1 / 3;  /* Strækker sig over to rækker */
-  justify-self: end; /* Højrejusteret i cellen */
+  grid-column: 1 / 2;
+  grid-row: 2;
+  justify-self: start;
   align-self: start;
 }
-/* citat */
+
+
 .case-proof {
-  display: inline-block; /* Gør transform mulig */
-  transform: translateY(40px);  /* Visuel forskydning */
+  display: block;
+  transform: none;
   font-style: italic;
-  text-align: right;
-    font-family: var(--font-h1-var2);
-    font-size: clamp(18px, 6vw, 45px);
-    margin-top: 50%;
+  text-align: left;
+  font-family: var(--font-h1-var2);
+  font-size: clamp(16px, 4vw, 22px);
+  margin-top: 0;
 }
 
-/* Divider mellem sektioner */
+/* Linje mellem sektioner */
 .divider {
   border: 0;
   border-top: 1px solid rgba(0,0,0,0.12);
-  margin-bottom:  1.5rem;
-  margin: 50px;
+  margin: 1.25rem 0;
 }
+
 /*-------------- SEKTION 2 ----------------*/
 
+/* Case grid - stacked på mobil */
 .case-grid {
   display: grid;
-  grid-template-columns: 1fr 480px;  /* Tekst (flydende) + billede (fast bredde) */
-  gap: 4rem;
-  align-items: center;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+  align-items: start;
+  padding: 0 1rem;
 }
 
-/* Tekst + strong arver samme typografi */
-.case-text p,strong {
+/* Tekst + strong har samme typografi */
+.case-text p, .case-text strong {
   font-family: var(--font-p-var1);
   color: var(--grey-primary);
-  font-size: 20px;
-  max-width: 58ch;
-  margin:70px ;
+  font-size: 18px;
+  max-width: 100%;
+  margin: 0 0 1rem 0;
+  text-align: left;
 }
 
 /* Media-wrapper */
 .case-media {
-  display: flex;   /* Flex bruges kun til justering */
-  justify-content: flex-end; /* Skubber billede mod højre */
-
-}
-/* Medie-billede */
-.case-media img {
-  max-width: 600px;
   display: block;
-  transform: translateY(8px); /* Design-effekt */
-  margin: 70px;
+  justify-content: center;
+}
+.case-media img {
+  width: 100%;
+  max-width: 720px;
+  margin: 0.75rem auto;
+  padding: 10px;
+  border-radius: 10px;
+  object-fit: contain;
 }
 
 /*-------------- SEKTION 3 ----------------*/
 .center-focus {
-  padding: 6rem 1rem;
+  padding: 2.5rem 1rem;
   text-align: center;
 }
-/* Grid uden kolonner → bruges til spacing */
+
+/* Grid uden kolonner → bruges til spacing på mobil */
 .focus-grid {
   display: grid;
-  gap: 3rem;  /* Lodret afstand */
-  justify-items: center;  /* Centrerer indhold vandret */
+  gap: 1.25rem;
+  justify-items: center;
 }
 
-/* Grid med to lige kolonner */
+/* Fokus-billede som stacking på mobil */
 .focus-media-grid {
   display: grid;
-  flex-direction: column;
-  grid-template-columns: 1fr 1fr;  /* To lige store kolonner */
-  gap: 4rem;
-  margin: 50px;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+  margin: 1.25rem 0;
 }
+
 /* Overskrift */
 .center-focus h1 {
   text-align: left;
-  margin-bottom: 2rem;
-  margin: 50px;
+  margin-bottom: .75rem;
+  font-family: var(--font-h1-var2);
+  font-size: clamp(22px, 6vw, 32px);
 }
+
 /* Brødtekst */
 .focus-text {
- 
   font-family: var(--font-p-var1);
-  font-size: 20px;
-    color: var(--grey-primary);
-  margin: 50px;
+  font-size: 18px;
+  color: var(--grey-primary);
+  margin: 0 0 1rem 0;
 }
 
- /* Fokus-billede */
+/* Fokus-billede */
 .focus-media img {
-  max-width: 900px;
-  
- 
+  width: 100%;
+  max-width: 720px;
+  margin: 0.75rem auto;
+  padding: 10px;
+  border-radius: 10px;
+  object-fit: contain;
 }
+
 /*-------------- SEKTION 4 ----------------*/
-.mobile-first {
-  padding: 6rem 1rem;
-  
-}
-.mobile-text {
-  margin: 50px;
-}
-/* Grid med to kolonner */
-.mobile-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;   /* Tekst + billede side om side */
-  gap: 4rem;
-  align-items: center;
-margin: 50px;
-}
-/* Mobile billede */
-.mobile-media img {
-  max-width: 600px;
-  display: block;
-  transform: translateY(8px);
-  margin: 70px;
-}
+.mobile-first { 
+  padding: 2.5rem 1rem; }
+.mobile-text { 
+  margin: 0 0 1rem 0; }
+.mobile-grid { 
+  display: grid; 
+  grid-template-columns: 1fr; 
+  gap: 1.25rem; 
+  align-items: center; 
+  padding: 0 1rem; }
+.mobile-media img { 
+  max-width: 320px; 
+  margin: 0.5rem auto; 
+  display: block; 
+  padding: 8px; }
 
 /*-------------- SEKTION 5 ----------------*/
-
 .img {
   display: block;
   margin-left: auto;
   margin-right: auto;
-   width: 100%;
-  max-width: 900px;
-   margin-top: 10%;
+  width: 100%;
+  max-width: 720px;
+  margin-top: 1rem;
 }
 
-/*-------------- SEKTION 5 afslutning ----------------*/
+/*-------------- SEKTION 6 afslutning (CTA) ----------------*/
 .cta {
-      margin-top: 10%;
-  padding: 6rem 1rem;
+  padding: 2.5rem 1rem;
   text-align: center;
-  height: 500px;
+  height: auto;
+  margin-top: 1.25rem;
 }
-/* CTA-overskrift */
 .cta h1 {
   font-family: var(--font-h1-var1);
-  margin-bottom: 2rem;
-    
+  margin-bottom: .75rem;
 }
-/* CTA-knap */
+
+/* Grid-layout i footer */
+.link-grid {
+  display: flex;
+  gap: 4rem;
+  justify-content: center;
+  align-items: flex-start;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+/* Kolonner i footer */
+.contact-col {
+  text-align: left;
+  min-width: 220px;
+}
+/* Små overskrifter i footer */
+.label1 {
+  font-family: var(--font-h1-var2);
+  font-style: italic;
+  color: var(--grey-primary);
+  margin-bottom: 1rem;
+}
+/* Pille-formet knap */
 .pill {
-  padding: .75rem 2rem;
-  border: 1px solid #000;
-  border-radius: 999px;  /* Pilleform */
-  text-decoration: none;
-  font-family: var(--font-p-var1);
+ border: 1px solid #000;
 }
 
+/*-------------- DESKTOP ----------------*/
+@media (min-width: 900px) {
+  .case-study { padding: 6rem 1rem; }
 
-/*-------------- MOBIL VISNING ----------------*/
-/* Tablet / small desktop */
-@media (max-width: 900px) {
-   /* Header-grid reduceres til én kolonne */
-  .case-header { 
-    grid-template-columns: 1fr; 
-    padding: 3.2rem 1rem; 
+  /* Header: to-kolonne layout på desktop */
+  .case-header {
+    display: grid;
+    grid-template-columns: 1fr 360px; /* 1fr = tekst, 360px = sidebar */
+    grid-auto-rows: auto;
+    gap: 1rem;
+    padding: 6rem 2rem 2rem;
   }
-  .case-title { 
-    font-size: clamp(36px, 10vw, 60px); 
+  .case-title {
+    grid-column: 1 / 2;
+    grid-row: 1;
+    font-size: clamp(48px, 9vw, 180px);
   }
-  .case-theme { 
-    margin-top: .5rem; 
-    font-size: clamp(14px, 3.5vw, 18px); 
+  .case-theme {
+    grid-column: 1 / 2;
+    grid-row: 2;
+    margin-top: 1rem;
+    font-size: clamp(18px, 6vw, 18px);
+    margin-top: 10%;
   }
-
-
-  /* Alle grids bliver single-column */
-  .case-grid,
-  .focus-grid,
-  .mobile-grid { 
-    grid-template-columns: 1fr; 
-    gap: 2rem; 
-    padding: 0 1rem; 
+  .case-meta {
+    grid-column: 2 / 3;
+    grid-row: 1 / 3;
+    justify-self: end;
+    align-self: start;
   }
-
-  /* Tekst skaleres ned */
- 
-  .case-text p,
-  .focus-text,
-  .mobile-text { 
-    font-size: 18px; 
-    margin: 0 0 1.25rem 0; 
-    max-width: 100%; }
-  /* Billeder tilpasses */
- 
-  .case-media img,
-  .focus-media img,
-  .img,
-  .mobile-media img {
-    width: 100%;
-    max-width: 720px;
-    margin: 0.75rem auto;
-    padding: 12px;
-    border-radius: 10px;
-    transform: none;
-    object-fit: contain;
+  .case-proof {
+    display: inline-block;
+    transform: translateY(40px);
+    font-style: italic;
+    text-align: right;
+    font-family: var(--font-h1-var2);
+    font-size: clamp(18px, 6vw, 45px);
+    margin-top: 50%;
   }
 
- 
-  .mobile-grid { 
-    gap: 1.25rem; 
+  /* Desktop: content to-kolonne */
+  .case-grid {
+    grid-template-columns: 1fr 480px;
+    gap: 4rem;
+    align-items: center;
   }
-  .mobile-text { 
-    grid-row: 1; 
+  .case-text p, .case-text strong {
+    font-size: 20px;
+    max-width: 58ch;
+    margin: 70px ;
   }
-  .mobile-media { 
-    grid-row: 2; 
-    justify-self: center; 
-    align-self: start; 
-  }
-
- 
-  nav { 
-    padding: 0 1rem;
-   }
-
-    /* Navigation stables */
-  nav ul { 
+  .case-media { 
     display: flex; 
-    flex-direction: column; 
-    gap: .5rem; 
-    align-items: flex-start; }
+    justify-content: flex-end; }
+  .case-media img { 
+    max-width: 600px; 
+    transform: translateY(8px); 
+    margin: 70px; }
 
+  .center-focus { 
+    padding: 6rem 1rem; 
+    text-align: center; }
+  .focus-grid { 
+    display: grid; 
+    gap: 3rem; 
+    justify-items: center; }
+  .focus-media-grid { 
+    grid-template-columns: 1fr 1fr; 
+    gap: 4rem; 
+    margin: 50px; }
 
-  .center-focus, .case-study, .cta { 
-    padding: 2.5rem 1rem; }
-}
+  .center-focus h1 { 
+    text-align: left; 
+    margin-bottom: 2rem; 
+    margin: 50px; }
+  .focus-text {
+     font-size: 20px; 
+     margin: 50px; }
+  .focus-media img { 
+    max-width: 900px; }
 
+  .mobile-first { 
+    padding: 6rem 1rem; }
+    .mobile-text {
+      font-size: 20px; 
+      margin: 50px; }
+  .mobile-grid { 
+    grid-template-columns: 1fr 1fr; 
+    gap: 4rem; 
+    align-items: center; 
+    margin: 50px; }
+  .mobile-media img { 
+    max-width: 600px; 
+    display: block; 
+    transform: translateY(8px); 
+    margin: 70px; }
 
+  .img { 
+    max-width: 900px; 
+    margin-top: 10%; }
 
-/* mobil */
-@media (max-width: 480px) {
-  .case-title { 
-    font-size: clamp(28px, 12vw, 44px); }
-  .case-text p,
-  .focus-text { 
-    font-size: 16px; 
-    line-height: 1.5; }
-  .case-media img,
-  .focus-media img,
-  .img { padding: 8px; 
-    max-width: 100%; 
-    margin-top: 1rem; }
-  .pill { 
-    padding: .6rem 1.25rem; }
-  .divider { 
-    margin: 1.25rem 0; }
-   .focus-media-grid img {
-    padding: 8px;
-    max-width: 100%;
-  }
+  .cta { 
+    padding: 6rem 1rem; 
+    height: 500px; 
+    margin-top: 10%; }
 }

@@ -2,14 +2,15 @@
 /* Wrapper til hero-sektionen */
 .hero-index {
   position: relative; /* Gør det muligt at placere tekst ovenpå billedet */
-  height: 90vh; /* Fylder 90% af skærmens højde */
+  min-height: 100vh;  /* Fylder hele mobilens viewport */
+  height: 100vh;
   overflow: hidden;
 }
 
 /* Container til hero-billedet */
 .hero-index-img {
   position: absolute;
-  inset: 0; 
+  inset: 0;
   z-index: 1;  /* Ligger bag teksten */
 }
 /* Selve hero-billedet */
@@ -18,23 +19,23 @@
   height: 100%;
   object-fit: cover; /* Beskærer billedet pænt */
   display: block; /* Fjerner inline spacing */
-  object-position: center bottom; /* Fokus på nederste del af billedet */
+  object-position: center center; /* centrér billedet */
 }
-
 
 /* Tekst ovenpå hero-billedet */
 .hero-index-text {
   position: absolute;
   z-index: 2; /* Ligger ovenpå billedet */
-  top: 55%;
-  left: 6%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
   display: flex;  /* Flexbox */
   flex-direction: column; /* Tekst oven på hinanden */
- 
-  padding: 30px;
-  
+  padding: 12px;
+  text-align: left;
   color: var(--white-primary);
- 
+  margin-top: 50%;
 }
 
 /* Mindre overskrift i hero */
@@ -42,50 +43,51 @@
   margin-left: 0;
   line-height: 1.5;
   font-family: var(--font-h1-var1);
-  font-size: clamp(18px, 3vw, 50px); /* Responsiv tekst */
+  font-size: clamp(14px, 5vw, 20px); 
 }
 /* Stor overskrift i hero */
 .hero-index-text .h1-var2 {
   margin-left: 0;
-   font-family: var(--font-h1-var1);
-  font-size: clamp(28px, 6vw, 90px); /* Responsiv tekst */
+  font-family: var(--font-h1-var1);
+  font-size: clamp(18px, 9vw, 40px); 
 }
 
 /*-------------- SEKTION 2 ----------------*/
 
 .Welcome {
-    height: 300px;
   position: relative;
-  height: 60vh;
-  overflow: hidden;
-   background: var(--bg-base);
-     font-family: var(--font-h1-var1);
-     font-size : clamp(20px, 6vw, 25px);
-  padding: 6rem 1rem;
-  margin: 100px;
-   text-align: center;
+  height: 400px;
+  background: var(--bg-base);
+  font-family: var(--font-h1-var1);
+  font-size: clamp(18px, 4vw, 22px);
+  padding: 2rem 1rem;
+  margin: 0;
+  text-align: center;
 }
 /* Tekst placeret i bunden af welcome-sektionen */
 .Welcome-text {
-  position: absolute;
-    bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);  /* Centrerer horisontalt */
-  color: var(--white-primary);
+  position: static;
+  bottom: auto;
+  left: auto;
+  transform: none;
+  color: var(--grey-primary);
   font-family: var(--font-p-var1);
-  font-size: 18px;
-  text-align: center;}
+  font-size: 16px;
+  text-align: center;
+  margin-top: .75rem;
+}
 
-  /*-------------- SEKTION 3 ----------------*/
-  /* Grid med to kolonner */
+/*-------------- SEKTION 3 ----------------*/
+/* Grid med to kolonner (desktop) — mobil: stacked */
 .grid_1-1 {
-  display: grid;  /* Aktiverer CSS Grid */
-  grid-template-columns: 1fr 1fr; /* To lige brede kolonner */
-  gap: 3.5rem;  /* Afstand mellem kolonner */
-  align-items: start; /* Starter indholdet øverst */
-  max-width: 1100px;
-  margin: 2.5rem auto;  /* Centrerer grid */
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+  align-items: start;
+  max-width: 100%;
+  margin: 1.5rem auto;
   padding: 0 1rem;
+  height: 1100px;
 }
 /* Kort i grid */
 .grid_1-1 .card {
@@ -94,84 +96,86 @@
 /* Overskrift i kort */
 .grid_1-1 .card h2 {
   font-family: var(--font-h1-var2);
-  font-size: clamp(22px, 4vw, 32px);
-  margin-bottom: 1rem;
+  font-size: clamp(18px, 5vw, 28px);
+  margin-bottom: .75rem;
 }
 /* Billede i kort */
 .grid_1-1 .card img {
   width: 100%;
-  max-width: 340px;
+  max-width: 320px;
   margin: 0 auto 1rem;
   display: block;
   border-radius: 6px;
   box-shadow: 0 12px 30px rgba(0,0,0,0.08);
 }
 
+/* Mindre knapper på mobil */
+.grid_1-1 .card .pill, .cta .pill {
+  padding: .7rem 1.5rem;
+  font-size: 15px;
+   border: 1px solid #000;
+}
 
 
-@media (max-width: 900px) {
-     /* Justerer hero-tekst på små skærme */
+
+/*-------------- DESKTOP ----------------*/
+@media (min-width: 900px) {
+  .hero-index { 
+    min-height: 90vh; 
+    height: 90vh; } /* desktop højde */
+  .hero-index-img img { 
+    object-position: center bottom; } /* desktop crop */
+
+  /* Hero tekst: flyttes til venstre på desktop */
   .hero-index-text {
-    width: 85%;
-    left: 7%;
-    top: 80%;
-    transform: translateY(-60%);
-    padding: 20px;
+    top: 55%;
+    left: 6%;
+    transform: translateY(-50%);
+    width: auto;
+    padding: 30px;
+    text-align: left;
+    margin-top: 7%;
   }
-  .hero-index-text .h1-var2 {
-    font-size: clamp(22px, 9vw, 40px);  }
- 
-      /* Fjerner store margins på mobil */
-  .Welcome, .about, .grid_1-1, footer.site-footer {
-    margin: 0;
-    padding: 2rem 1rem;
-    height: auto;
+  .hero-index-text .h1-var1 { 
+    font-size: clamp(18px, 3vw, 50px); }
+  .hero-index-text .h1-var2 { 
+    font-size: clamp(28px, 6vw, 90px); }
+
+  /* Welcome: større paddings på desktop */
+  .Welcome {
+    height: 60vh;
+    padding: 6rem 1rem;
+    margin: 100px;
+    font-size: clamp(20px, 6vw, 25px);
+  }
+  .Welcome-text {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--white-primary);
+    font-size: 18px;
   }
 
-
+  /* Grid: to kolonner på desktop */
   .grid_1-1 {
-    grid-template-columns: 1fr; /* Grid bliver til én kolonne */
-    gap: 1.25rem;
-    max-width: 100%;
+    grid-template-columns: 1fr 1fr;
+    gap: 3.5rem;
+    max-width: 1100px;
+    margin: 2.5rem auto;
   }
   .grid_1-1 .card img { 
-    max-width: 320px; 
-}
+    max-width: 340px; }
 
-    /* Mindre knapper */
-  .grid_1-1 .card .pill, .cta .pill { 
-    padding: .7rem 1.5rem; 
-    font-size: 15px; 
-}
-
-  /* Header forbliver sticky */
+  /* Header / nav adjustments */
   header { 
     position: sticky; 
     top: 0; 
-    z-index: 20; 
-    background-color: var(--bg-base); 
-}
-}
+    z-index: 20; }
 
-
-
-/* mobil */
- 
-  @media (max-width: 480px) {
-    .hero-index-text .h1-var1 { 
-        font-size: clamp(14px, 6vw, 20px); 
-    }
-    .hero-index-text .h1-var2 { 
-        font-size: clamp(18px, 8vw, 34px); 
-    }
- .grid_1-1 .card img { 
-    max-width: 280px; 
-}
-  .Welcome, .about { 
-    padding: 1.25rem; 
-}
-  footer.site-footer { 
-    padding: 3.5rem 1rem; 
-}
+  /* CTA knapper på desktop */
+  .grid_1-1 .card .pill, .cta .pill { 
+    padding: .75rem 2rem; 
+    font-size: 16px; }
 
 }
