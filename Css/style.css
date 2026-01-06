@@ -1,29 +1,35 @@
 /*-------------- SEKTION 1 ----------------*/
+/* Wrapper til hero-sektionen */
 .hero-index {
-  position: relative;
-  height: 90vh;
+  position: relative; /* Gør det muligt at placere tekst ovenpå billedet */
+  height: 90vh; /* Fylder 90% af skærmens højde */
   overflow: hidden;
 }
 
+/* Container til hero-billedet */
 .hero-index-img {
   position: absolute;
-  inset: 0; /* top:0; right:0; bottom:0; left:0 */
-  z-index: 1;
+  inset: 0; 
+  z-index: 1;  /* Ligger bag teksten */
 }
+/* Selve hero-billedet */
 .hero-index-img img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  display: block;
-  object-position: center bottom; 
+  object-fit: cover; /* Beskærer billedet pænt */
+  display: block; /* Fjerner inline spacing */
+  object-position: center bottom; /* Fokus på nederste del af billedet */
 }
+
+
+/* Tekst ovenpå hero-billedet */
 .hero-index-text {
   position: absolute;
-  z-index: 2;
+  z-index: 2; /* Ligger ovenpå billedet */
   top: 55%;
   left: 6%;
-  display: flex;
-  flex-direction: column;
+  display: flex;  /* Flexbox */
+  flex-direction: column; /* Tekst oven på hinanden */
  
   padding: 30px;
   
@@ -31,16 +37,18 @@
  
 }
 
+/* Mindre overskrift i hero */
 .hero-index-text .h1-var1 {
   margin-left: 0;
   line-height: 1.5;
   font-family: var(--font-h1-var1);
-  font-size: clamp(18px, 3vw, 50px);
+  font-size: clamp(18px, 3vw, 50px); /* Responsiv tekst */
 }
+/* Stor overskrift i hero */
 .hero-index-text .h1-var2 {
   margin-left: 0;
    font-family: var(--font-h1-var1);
-  font-size: clamp(28px, 6vw, 90px);
+  font-size: clamp(28px, 6vw, 90px); /* Responsiv tekst */
 }
 
 /*-------------- SEKTION 2 ----------------*/
@@ -48,44 +56,48 @@
 .Welcome {
     height: 300px;
   position: relative;
-  height: 100vh;
+  height: 60vh;
   overflow: hidden;
    background: var(--bg-base);
      font-family: var(--font-h1-var1);
-     font-size : clamp(32px, 6vw, 25px);
+     font-size : clamp(20px, 6vw, 25px);
   padding: 6rem 1rem;
   margin: 100px;
    text-align: center;
 }
-
+/* Tekst placeret i bunden af welcome-sektionen */
 .Welcome-text {
   position: absolute;
     bottom: 20px;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translateX(-50%);  /* Centrerer horisontalt */
   color: var(--white-primary);
   font-family: var(--font-p-var1);
   font-size: 18px;
   text-align: center;}
 
-  /*-------------- SEKTION 2 ----------------*/
+  /*-------------- SEKTION 3 ----------------*/
+  /* Grid med to kolonner */
 .grid_1-1 {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 3.5rem;
-  align-items: start;
+  display: grid;  /* Aktiverer CSS Grid */
+  grid-template-columns: 1fr 1fr; /* To lige brede kolonner */
+  gap: 3.5rem;  /* Afstand mellem kolonner */
+  align-items: start; /* Starter indholdet øverst */
   max-width: 1100px;
-  margin: 2.5rem auto;
+  margin: 2.5rem auto;  /* Centrerer grid */
   padding: 0 1rem;
 }
+/* Kort i grid */
 .grid_1-1 .card {
   text-align: center;
 }
+/* Overskrift i kort */
 .grid_1-1 .card h2 {
   font-family: var(--font-h1-var2);
   font-size: clamp(22px, 4vw, 32px);
   margin-bottom: 1rem;
 }
+/* Billede i kort */
 .grid_1-1 .card img {
   width: 100%;
   max-width: 340px;
@@ -95,10 +107,10 @@
   box-shadow: 0 12px 30px rgba(0,0,0,0.08);
 }
 
-/* Mobile: make hero fill full viewport and center text */
-@media (max-width: 900px) {
 
-@media (max-width: 700px) {
+
+@media (max-width: 900px) {
+     /* Justerer hero-tekst på små skærme */
   .hero-index-text {
     width: 85%;
     left: 7%;
@@ -109,76 +121,57 @@
   .hero-index-text .h1-var2 {
     font-size: clamp(22px, 9vw, 40px);  }
  
-    /* Reduce big desktop margins and stack content directly under hero */
+      /* Fjerner store margins på mobil */
   .Welcome, .about, .grid_1-1, footer.site-footer {
     margin: 0;
     padding: 2rem 1rem;
     height: auto;
   }
 
-  /* Cards grid -> single column, tighter gap */
+
   .grid_1-1 {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr; /* Grid bliver til én kolonne */
     gap: 1.25rem;
     max-width: 100%;
   }
-  .grid_1-1 .card img { max-width: 320px; }
+  .grid_1-1 .card img { 
+    max-width: 320px; 
+}
 
-  /* Make buttons/tap targets friendlier */
-  .grid_1-1 .card .pill, .cta .pill { padding: .7rem 1.5rem; font-size: 15px; }
+    /* Mindre knapper */
+  .grid_1-1 .card .pill, .cta .pill { 
+    padding: .7rem 1.5rem; 
+    font-size: 15px; 
+}
 
-  /* Prevent header from causing visual overlap */
-  header { position: sticky; top: 0; z-index: 20; background-color: var(--bg-base); }
+  /* Header forbliver sticky */
+  header { 
+    position: sticky; 
+    top: 0; 
+    z-index: 20; 
+    background-color: var(--bg-base); 
 }
 }
 
 
 
-  /* Optional: reduce hero text sizes on small phones */
+/* mobil */
+ 
   @media (max-width: 480px) {
-    .hero-index-text .h1-var1 { font-size: clamp(14px, 6vw, 20px); }
-    .hero-index-text .h1-var2 { font-size: clamp(18px, 8vw, 34px); }
- .grid_1-1 .card img { max-width: 280px; }
-  .Welcome, .about { padding: 1.25rem; }
-  footer.site-footer { padding: 3.5rem 1rem; }
-
+    .hero-index-text .h1-var1 { 
+        font-size: clamp(14px, 6vw, 20px); 
+    }
+    .hero-index-text .h1-var2 { 
+        font-size: clamp(18px, 8vw, 34px); 
+    }
+ .grid_1-1 .card img { 
+    max-width: 280px; 
+}
+  .Welcome, .about { 
+    padding: 1.25rem; 
+}
+  footer.site-footer { 
+    padding: 3.5rem 1rem; 
 }
 
-/*
-.about {
-  position: relative;
-  height: 100vh;
-  overflow: hidden;
-  background: var(--bg-base);
-  padding: 6rem 1rem;
-  margin: 100px;
-}
-
-.about-text {
-  position: absolute;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  color: var(--white-primary);
-  font-family: var(--font-p-var1);
-  font-size: 18px;
-}
-
-.grid_1-1 {
-    grid: ; 
-    grid-template-columns: 1fr 1fr;
-}
-
- Mobile adjustments 
-@media (max-width: 700px) {
-  .hero-index-text {
-    width: 85%;
-    left: 7%;
-    top: 80%;
-    transform: translateY(-60%);
-    padding: 20px;
-  }
-  .hero-index-text .h1-var2 {
-    font-size: clamp(22px, 9vw, 40px);
-  }
 }

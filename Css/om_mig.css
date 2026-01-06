@@ -1,4 +1,4 @@
-/* ===== GENERELT ===== */
+/* Begrænser bredden på alle sectioner og centrerer dem */
 section {
   max-width: 1200px;
   margin: 0 auto 8rem;
@@ -6,35 +6,48 @@ section {
     background: var(--bg-base);
 }
 
-
-
-/* ===== ABOUT ===== */
+/*-------------- SEKTION 1 ----------------*/
+/* Grid-layout med to kolonner */
 .about-grid {
     margin-top: 100px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
+  display: grid; /* Aktiverer CSS Grid */
+  grid-template-columns: 1fr 1fr; /* To lige brede kolonner */
+  gap: 1rem; /* Afstand mellem kolonner */
     align-items: center;
 }
-
+/* Billeder i venstre kolonne */
 .about-left img,
 .experience-left img {
   width: 100%;
   max-width: 320px;
 }
-
+/* Horisontale linjer (hr) */
 .about-right hr,
 .experience-right hr,
 .mind-boost hr {
   border: none;
-  border-top: 1px solid #999;
+  border-top: 1px solid #999; /* Tilføjer tynd grå linje */
   margin: 1.5rem 0;
   font-family: var(--font-h1-var2);
 }
 
 
+/*-------------- SEKTION 2 ----------------*/
+/* Overskrifter inde i tekst-sektion */
+.text h2 {
+  font-family: var(--font-h1-var2);
+  margin-bottom: 1rem;
+  margin:1.5rem 0;
+}
+/* Paragrafer i tekst-sektion */
+.text p {
+  font-family: var(--font-p-var1);
+  line-height: 1.6; /* God læsbarhed */
+}
 
-/* ===== MIND BOOST ===== */
+
+/*-------------- SEKTION 3 ----------------*/
+/* Wrapper til mind-boost sektionen */
 .mind-boost {
   max-width: 1200px;
 }
@@ -44,9 +57,7 @@ section {
    position: relative;
   width: 100vw;
   height: 85vh;
-  max-width: none;
-  margin-left: calc(50% - 50vw);
-  margin-right: calc(50% - 50vw);
+  max-width: none;  /* Ignorer section max-width */
   overflow: hidden;
 }
 
@@ -57,20 +68,23 @@ section {
   display: block;
 }
 
+
+/* Overlay ovenpå billedet */
 .run-overlay {
   position: absolute;
   inset: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  
-  background: rgba(0, 0, 0, 0.45);color: white;
+  display: flex;  /* Flexbox til centrering */
+  flex-direction: column;  /* Indhold oven på hinanden */
+  justify-content: center; /* Centrerer lodret */
+  align-items: center;  /* Centrerer vandret */
+  background: rgba(0, 0, 0, 0.45); /* Mørkt overlay */
+  color: white;
   text-align: center;
   font-family: var(--font-h1-var2);
 }
 
+/* Overskrift i overlay */
 .run-overlay h1 {
-  font-size: clamp(2rem, 5vw, 4rem);
+  font-size: clamp(2rem, 5vw, 4rem); /* Responsiv tekst */
     margin-bottom: 1rem;
 }
