@@ -3,15 +3,18 @@ section {
   max-width: 1200px;
   margin: 0 auto 8rem;
   padding: 0 1rem;
+    background: var(--bg-base);
 }
 
 
 
 /* ===== ABOUT ===== */
 .about-grid {
+    margin-top: 100px;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 4rem;
+  gap: 1rem;
+    align-items: center;
 }
 
 .about-left img,
@@ -26,30 +29,32 @@ section {
   border: none;
   border-top: 1px solid #999;
   margin: 1.5rem 0;
+  font-family: var(--font-h1-var2);
 }
 
-/* ===== EXPERIENCE ===== */
-.experience-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
-}
+
 
 /* ===== MIND BOOST ===== */
 .mind-boost {
-  max-width: 900px;
+  max-width: 1200px;
 }
 
 /* ===== RUN / STRAVA ===== */
 .run {
-  position: relative;
-  max-width: 100%;
+   position: relative;
+  width: 100vw;
+  height: 85vh;
+  max-width: none;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  overflow: hidden;
 }
 
 .run img {
-  width: 100%;
+     width: 100%;
+  height: 100%;
+  object-fit: cover;
   display: block;
-  border-radius: 16px;
 }
 
 .run-overlay {
@@ -59,12 +64,13 @@ section {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: white;
-  background: rgba(0, 0, 0, 0.45);
+  
+  background: rgba(0, 0, 0, 0.45);color: white;
   text-align: center;
+  font-family: var(--font-h1-var2);
 }
 
 .run-overlay h1 {
   font-size: clamp(2rem, 5vw, 4rem);
-  margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
 }
