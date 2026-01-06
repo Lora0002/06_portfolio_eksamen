@@ -1,84 +1,88 @@
-.selected-works { padding: 5rem 1rem; }
-.section-title {
-  text-align: center;
-  font-family: var(--font-h1-var2);
-  font-size: clamp(32px, 6vw, 56px);
-  margin-bottom: 2.5rem;
+
+/*-------------- SEKTION 1 ----------------*/
+.selected-works { 
+    padding: 5rem 1rem;/* Giver luft omkring sektionen:
+     5rem top/bund og 1rem i siderne */ }   
+
+.section-title /* Overskrift for sektionen */{
+  text-align: center;   /* Centrerer teksten horisontalt */
+  font-family: var(--font-h1-var2);  /* Bruger en CSS-variabel til font (defineret fra general.css) */
+  font-size: clamp(32px, 6vw, 56px);/* Responsiv fontstørrelse:
+     - min: 32px
+     - foretrukken: 6vw (viewport width)
+     - max: 56px */
+  margin-bottom: 2.5rem;/* Luft under overskriften */
 
 }
 
-/* Grid */
+/*-------------- SEKTION 2 ----------------*/
 .works-grid {
-  display: grid;
-  gap: 2.25rem;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  display: grid;/* Aktiverer CSS Grid */
+  gap: 2.25rem; /* Afstand mellem grid-items */
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));/* Automatisk antal kolonner:
+     - hver kolonne er min. 300px
+     - ellers fylder den 1fr (resten af pladsen) */
   max-width: 1100px;
   margin: 0 auto;
+  /* Centrerer grid horisontalt */
 }
 
 /* Kort */
 .work-card {
-  position: relative;
-  overflow: hidden;
-  border-radius: 22px;
-  display: block;
-  
-  color: inherit;
-  transition: transform .18s ease, box-shadow .18s ease;
+  position: relative;/* Gør det muligt at placere overlay absolut inden i kortet */
+  overflow: hidden;  /* Skjuler indhold der går udenfor (fx zoom på billede) */
+  display: block;  /* Gør kortet klikbart */
+  transition: transform .18s ease, box-shadow .18s ease; /* Smooth animation på hover */
 }
 
-/* thumbnail kvadratisk */
-.work-card .thumb {
 
-  inset: 0;
-  
-  overflow: hidden;
-  display: block;
-  background: var(--bg-base);
-}
 
-/* billede: object-fit + variabel for crop */
+
 .work-card img {
+       /* Fylder hele kortet */
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: var(--obj-pos, center center);
-  display: block;
-  transition: transform .25s ease;
+
+  object-fit: cover;  /* Beskærer billedet uden at forvrænge */
+  object-position: var(--obj-pos, center center); /* Hvor billedet beskæres fra */
+  display: block;  /* Fjerner inline spacing */
+  transition: transform .25s ease;  /* Animation til zoom-effekt */
 }
 
 /* Hover-lift effekt på kortet */
 .work-card:hover,
 .work-card:focus {
-  transform: translateY(-6px);
-  box-shadow: 0 18px 40px rgba(0,0,0,0.12);
+  transform: translateY(-6px); /* Løfter kortet en smule op */
+ 
 }
-.work-card:hover img { transform: scale(1.03); }
+.work-card:hover img { 
+    transform: scale(1.03); /* Zoomer billedet lidt ved hover */
+}
 
 /* Mørk overlay */
 .work-card .overlay {
+     /* Fylder hele kortet */
   position: absolute;
   inset: 0;
+   /* Centrerer indhold både lodret og vandret */
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 40px;
-  background: rgba(0,0,0,0.56);
-  opacity: 0;
-  transition: opacity .28s ease, transform .28s ease;
-  transform: translateY(6px);
+  border-radius: 40px;   /* Runde hjørner (matcher kortet) */
+  background: rgba(0,0,0,0.56);  /* Mørk gennemsigtig baggrund */
+  opacity: 0;   /* Skjult som standard */
+  transition: opacity .28s ease, transform .28s ease;   /* Animation ved hover */
+  transform: translateY(6px);  /* Starter lidt nede */
   text-align: center;
  
 }
 /* overlay-tekst */
 .work-card .overlay h3 {
   color: var(--white-primary);
-  
   text-transform: uppercase;
-
-  margin: 0;
-  z-index: 2;
-  font-size: clamp(14px, 2.6vw, 22px);
+  margin: 0; /* Fjerner standard margin */
+  z-index: 2;   /* Sikrer at teksten ligger ovenpå overlay */
+  font-size: clamp(14px, 2.6vw, 22px);   /* Responsiv tekststørrelse */
 }
 
 /* reveal på hover/focus (og keyboard-accessible) */
@@ -86,13 +90,22 @@
 .work-card:focus .overlay {
   opacity: 1;
   transform: translateY(0);
-  pointer-events: auto;
+  pointer-events: auto;   /* Gør overlay klikbart */
 }
 
 
 /* Responsive tweaks */
 @media (max-width: 600px) {
-  .section-title { font-size: clamp(24px, 9vw, 40px); }
-  .works-grid { gap: 1.25rem; }
-  .work-card { border-radius: 16px; }
+      /* Mindre overskrift på mobil */
+  .section-title { 
+    font-size: clamp(24px, 9vw, 40px); 
+}
+ /* Mindre afstand mellem kort */
+  .works-grid { 
+    gap: 1.25rem; 
+}
+  /* Mindre runde hjørner */
+  .work-card { 
+    border-radius: 16px; 
+}
 }
